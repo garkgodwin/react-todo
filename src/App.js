@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {  useState } from 'react'
 
-function App() {
+
+//?STYLES
+import './App.css';
+import Form from './components/form/Form';
+import Todos from './components/lists/Todos';
+
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState({
+    index: 0,
+    title: '',
+    completed: false,
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="app-bg bg-top"></div>
+      <div className="app-bg bg-float ">
+        <h1 className="app-title">Todo App</h1>
+        <hr/>
+        <Form todo={todo} setTodo={setTodo} todos={todos} setTodos={setTodos}/>
+        <hr/>
+        <Todos todos={todos} setTodos={setTodos} setTodo={setTodo}/>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
